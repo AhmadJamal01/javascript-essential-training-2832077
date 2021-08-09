@@ -21,4 +21,10 @@ const backpack = {
   },
 };
 
+
 console.log("The backpack object:", backpack);
+console.log("The backpack color is:", backpack.color);
+console.log("The backpack name is:", backpack["name"]);
+var leftLength = "left";
+console.log("The backpack left strap length is:", backpack.strapLength[leftLength]);
+
