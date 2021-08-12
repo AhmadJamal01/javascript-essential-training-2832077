@@ -72,17 +72,23 @@ const navContent = `
 `;
 const navBar = document.createElement("nav");
 navBar.classList.add("main-nav");
-navBar.setAttribute(
+navBar.innerHTML = navContent;
+// navBar.setAttribute(
+//   "style",
+//   "position:relative; display: grid; grid-template-columns: repeat(5,1fr);grid-auto-rows: minmax(100px,auto);margin: 0 auto;max-width: 100%"
+// );
+//const navLi = document.querySelectorAll(".main-nav li");
+const headerElement = document.querySelector(".siteheader");
+headerElement.insertAdjacentElement("afterend", navBar);
+const navUL = document.querySelector(".main-nav ul");
+console.log(navUL);
+navUL.setAttribute(
   "style",
   "position:relative; display: grid; grid-template-columns: repeat(5,1fr);grid-auto-rows: minmax(100px,auto);margin: 0 auto;max-width: 100%"
 );
-const navLi = document.querySelectorAll(".main-nav li");
 /*navLi.forEach((li) => {
-  //li.style.width = "24%";
-  li.style.display = "inline-block";
-});*/
-navBar.innerHTML = navContent;
+    //li.style.width = "24%";
+    li.style.display = "inline-block";
+  });*/
 //const parentDiv=document.querySelector(".siteheader").parentNode;
 //const childNode=document.querySelector(".siteheader");
-const headerElement = document.querySelector(".siteheader");
-headerElement.insertAdjacentElement("afterend", navBar);
