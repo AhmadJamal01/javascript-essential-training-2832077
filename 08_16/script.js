@@ -5,8 +5,50 @@
  * - Set the inner HTML of the article to the existing HTML output provided in const content.
  * - Append each backpack object to the <main> element.
  */
-import Backpack from "./components/Backpack.js";
+//import Backpack from "./components/Backpack.js";
+import backpackObjectArray from "./components/data.js";
 
+const addArticle = () => {
+  const backpacks = backpackObjectArray.map((backpackobj) => {
+    const newArticle = document.createElement("article");
+    newArticle.classList.add("backpack");
+    newArticle.setAttribute("id", backpackobj.id);
+    const content = `
+      <figure class="backpack__image">
+      <img src=${backpackobj.image} alt="" />
+      </figure>
+      <h1 class="backpack__name">${backpackobj.name}</h1>
+      <ul class="backpack__features">
+        <li class="packprop backpack__volume">Volume:<span> ${
+          backpackobj.volume
+        }l</span></li>
+        <li class="packprop backpack__color">Color:<span> ${
+          backpackobj.color
+        }</span></li>
+        <li class="backpack__age">Age:<span> ${backpackobj.backpackAge()} days old</span></li>
+        <li class="packprop backpack__pockets">Number of pockets:<span> ${
+          backpackobj.pocketNum
+        }</span></li>
+        <li class="packprop backpack__strap">Left strap length:<span> ${
+          backpackobj.strapLength.left
+        } inches</span></li>
+        <li class="packprop backpack__strap">Right strap length:<span> ${
+          backpackobj.strapLength.right
+        } inches</span></li>
+        <li class="feature backpack__lid">Lid status:<span> ${
+          backpackobj.lidOpen ? "open" : "closed"
+        }</span></li>
+      </ul>
+    `;
+    newArticle.innerHTML = content;
+    return newArticle;
+  });
+  let main = document.querySelector(".maincontent");
+  backpacks.forEach((pack) => {
+    main.append(pack);
+  });
+};
+/*
 const everydayPack = new Backpack(
   "pack01",
   "Everyday Backpack",
@@ -57,3 +99,5 @@ newArticle.setAttribute("id", "everyday");
 newArticle.innerHTML = content;
 
 main.append(newArticle);
+*/
+addArticle();

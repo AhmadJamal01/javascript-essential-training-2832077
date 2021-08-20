@@ -13,6 +13,8 @@
  *  - Returns <figure> element to where function is called
  */
 
+//const { doc, getFileInfo } = require("prettier");
+
 const frogpack = {
   name: "Frog Backpack",
   volume: 8,
@@ -57,3 +59,24 @@ const content = `
       }</span></li>
     </ul>  
 `;
+
+const newFig = (packObj) => {
+  const fig = document.createElement("figure");
+  const img = document.createElement("img");
+  img.setAttribute("src", packObj.image);
+  const caption = document.createElement("figcaption");
+  caption.innerText = "image of a froggy backpack";
+  fig.appendChild(img);
+  fig.appendChild(caption);
+  return fig;
+};
+
+const newArticle = (fig) => {
+  const article = document.createElement("article");
+  article.innerHTML = content;
+  article.appendChild(fig);
+  return article;
+};
+
+const mainElement = document.querySelector("body main");
+mainElement.appendChild(newArticle(newFig(frogpack)));
